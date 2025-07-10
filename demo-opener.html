@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DMD Family Support - Demo Introduction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6741 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: white;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+        
+        .problem-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .problem-section h2 {
+            color: #ff6b6b;
+            font-size: 28px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .scenario {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid #ff6b6b;
+            padding: 25px;
+            border-radius: 0 12px 12px 0;
+            margin: 25px 0;
+            font-style: italic;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .current-reality {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .reality-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .reality-box h3 {
+            color: #ffd93d;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .reality-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .reality-box li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .reality-box li::before {
+            content: "💔";
+            position: absolute;
+            left: 0;
+        }
+        
+        .solution-section {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+        }
+        
+        .solution-section h2 {
+            color: #4ecdc4;
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+        
+        .solution-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .solution-point {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .solution-point h4 {
+            color: #4ecdc4;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .solution-point p {
+            font-size: 14px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+        
+        .demo-button {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(78, 205, 196, 0.3);
+            margin-top: 30px;
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(78, 205, 196, 0.4);
+        }
+        
+        .stats {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+        }
+        
+        .stats h3 {
+            color: #ffd93d;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .stat-row {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+            margin: 10px;
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #4ecdc4;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .current-reality {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            .header p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>From Devastation to Personalized Support</h1>
+            <p>Every family's journey with Duchenne is unique. What if their support was too?</p>
+        </div>
+        
+        <div class="problem-section">
+            <div class="stats">
+                <h3>The Impact of Poor Diagnosis Delivery</h3>
+                <div class="stat-row">
+                    <div class="stat">
+                        <span class="stat-number">73%</span>
+                        <div class="stat-label">of families report diagnosis delivery was traumatic</div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">6 months</span>
+                        <div class="stat-label">average time to find proper support</div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1 in 3</span>
+                        <div class="stat-label">families develop PTSD from diagnosis experience</div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>The Current Reality</h2>
+            
+            <div class="scenario">
+                "Your child has Duchenne Muscular Dystrophy. Here's a piece of paper with the name written on it. Go home and read about it on the internet."
+            </div>
+        </div>
+        
+        <div class="solution-section">
+            <h2>What If Every Family Got Their Own Journey?</h2>
+            <p style="font-size: 20px; margin-bottom: 30px; opacity: 0.9; font-weight: 500;">
+                AI-powered, personalized support that adapts to how <em>each family</em> is feeling, where <em>they</em> are emotionally, and what <em>their specific situation</em> needs.
+            </p>
+            
+            <div class="solution-points">
+                <div class="solution-point">
+                    <h4>🧠 Reads Emotional State</h4>
+                    <p>Understands if families are overwhelmed, angry, or ready for information</p>
+                </div>
+                
+                <div class="solution-point">
+                    <h4>🎯 Creates Unique Paths</h4>
+                    <p>Generates personalized responses, resources, and next steps for each family</p>
+                </div>
+                
+                <div class="solution-point">
+                    <h4>⚡ Real-Time Adaptation</h4>
+                    <p>Every response is crafted live based on specific words and emotional needs</p>
+                </div>
+                
+                <div class="solution-point">
+                    <h4>💚 Trauma-Informed AI</h4>
+                    <p>Never overwhelms - respects processing time and emotional capacity</p>
+                </div>
+            </div>
+            
+            <button class="demo-button" onclick="startDemo()">
+                See the Personalized AI in Action
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function startDemo() {
+            // Replace this with navigation to your actual app
+            alert("This would transition to the live demo of the DMD Family Support App.\n\nClick OK to continue to the working prototype.");
+            
+            // You can replace this with:
+            // window.location.href = 'dmd-support.html';
+            // or open in new tab:
+            // window.open('dmd-support.html', '_blank');
+        }
+    </script>
+</body>
+</html>
